@@ -1,3 +1,25 @@
-<p>
-  auth works!
-</p>
+<div class="container">
+  <div class="row">
+    <form [formGroup]="authForm">
+      <div class="col s12 offset-s4" style="margin-top: 170px;">
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="usuario" type="text" class="validate" formControlName="usuario">
+            <label for="usuario">Usuário:</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="senha" type="text" class="validate" formControlName="senha">
+            <label for="senha">Senha:</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6 offset-s1">
+            <button type="button" class="waves-effect waves-light btn" (click)="Autenticar()" style="width:185px;">Entrar</button>
+          </div>  
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

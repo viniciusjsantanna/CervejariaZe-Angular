@@ -1,0 +1,63 @@
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">&nbsp;&nbsp;Cervejaria do Zé</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/produto">Produto</a></li>
+      <li><a class="dropdown-trigger" data-target="dropdown1" >LogOut</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+  <div class="" style="margin-left: 20px; margin-right:20px; margin-top:50px;">
+      <h4 style="color:gray;">Cadastrar Produto</h4>
+      <hr style="border-bottom: 1px solid gray;">
+  </div>
+  
+</div>
+<div class="container" style="margin-top:60px;">
+  <form [formGroup]="prodForm">
+    <div class="row">
+      <div class="input-field col s4">
+        <input type="text" class="validate" id="marca" formControlName="marca"/>
+        <label for="marca">Marca</label>
+      </div>
+      <div class="input-field col s4">
+        <input type="text" class="validate" id="nome" formControlName="nome"/>
+        <label for="nome">Nome</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s4">
+          <label style="font-size:17px;">Tipo</label>
+          <select style="border-radius:2px; border:1px solid gray;margin-top:4px;" class="browser-default"  formControlName="tipo">
+            <option value="" disabled selected>Escolha um tipo</option>
+            <option *ngFor="let t of Tipo"  [value]="t.id">{{t.tipo}}</option>
+          </select>
+      </div>
+      <div class="input-field col s4">
+        <input type="text" class="validate" id="cod"  formControlName="codigo"/>
+        <label for="cod">Código</label>
+      </div>
+    </div>
+    <div class="row">
+      <div  class="col s4">
+        <label style="font-size:17px;" for="cod">Imagem</label>
+        <input style="margin-top:4px;" (change)="onFileChange($event)" type="file" formControlName="imagem"/>
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+          <button type="button" (click)="salvarProduto()" class="waves-effect waves-light btn">Salvar</button>&nbsp;
+          <button type="button" class="waves-effect waves-light btn">Voltar</button>
+      </div>
+   
+    </div>
+  </form>
+</div>
