@@ -18,10 +18,11 @@ export class ProdutoService {
    }
 
   public Cadastrar(produto): any{
+      console.log(produto);
       return this.http.post<any>('http://localhost:55732/api/produto', JSON.stringify(produto), this.httpOptions);
   }
 
   public Listar(): Observable<any>{
-    return this.http.get('http://localhost:55732/api/produto', this.httpOptions);
+    return this.http.get<any>('http://localhost:55732/api/produto', this.httpOptions);
   }
 }
