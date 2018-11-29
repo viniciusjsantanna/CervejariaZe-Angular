@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -11,17 +12,21 @@ export class AuthComponent {
   authForm: FormGroup;
 
 
-  constructor(private fb:FormBuilder) { 
+  constructor(private fb:FormBuilder, private authService:AuthService) { 
     this.authForm = this.fb.group({
-      usuario: ['', Validators.required],
-      senha: ['', Validators.required]
+      Usuario: ['', Validators.required],
+      Senha: ['', Validators.required]
     });
 
   }
 
   public Autenticar():void{
     const usuarioLogado = this.authForm.value;
-    console.log(usuarioLogado);
+    this.authService.Autenticar(usuarioLogado).subscribe(
+      res =>{
+        console.log(res);
+      }
+    )
   }
 
 }

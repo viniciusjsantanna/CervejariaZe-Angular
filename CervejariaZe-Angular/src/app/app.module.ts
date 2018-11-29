@@ -5,11 +5,16 @@ import { ProdutoModule } from './produto/produto.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
+import { GeradorCardComponent } from './gerador-card/gerador-card.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './helpers/jwt.Interceptor';
+import { AuthGuards } from './guards/auth.guards';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    GeradorCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -17,7 +22,14 @@ import { AuthModule } from './auth/auth.module';
     ProdutoModule,
     AuthModule,
   ],
-  providers: [],
+  providers: [
+     {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    AuthGuards
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,7 +15,7 @@
 </nav>
 <div class="row">
   <div class="" style="margin-left: 20px; margin-right:20px; margin-top:50px;">
-      <h4 style="color:gray;">Cadastrar Produto</h4>
+      <h5 style="color:gray;"><i class="material-icons left small">add</i>Cadastrar Produto</h5>
       <hr style="border-bottom: 1px solid gray;">
   </div>
   
@@ -33,12 +33,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col s4">
-          <label style="font-size:17px;">Tipo</label>
-          <select style="border-radius:2px; border:1px solid gray;margin-top:4px;" class="browser-default"  formControlName="tipo">
-            <option value="" disabled selected>Escolha um tipo</option>
+      <div class="input-field col s4">
+          <select name="singleSelect" name="selectedOption" materialize="material_select">
+            <option value="" disabled selected>Selecione</option>
             <option *ngFor="let t of Tipo"  [value]="t.id">{{t.tipo}}</option>
           </select>
+          <label>Tipo</label>
       </div>
       <div class="input-field col s4">
         <input type="text" class="validate" id="cod"  formControlName="codigo"/>
@@ -46,18 +46,25 @@
       </div>
     </div>
     <div class="row">
-      <div  class="col s4">
-        <label style="font-size:17px;" for="cod">Imagem</label>
-        <input style="margin-top:4px;" (change)="onFileChange($event)" type="file" formControlName="imagem"/>
-        
+      <div class="col s4">
+        <label for="">Imagem</label>
+        <div class="file-field input-field">
+          <div class="btn-floating btn-large">
+            <span>IMG</span>
+            <input type="file" (change)="onFileChange($event)">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" formControlName="imagem" type="text">
+          </div>
+        </div>
       </div>
+      
     </div>
     <div class="row">
-      <div class="col s6">
-          <button type="button" (click)="salvarProduto()" class="waves-effect waves-light btn">Salvar</button>&nbsp;
-          <button type="button" class="waves-effect waves-light btn">Voltar</button>
-      </div>
-   
-    </div>
+        <div class="col s6">
+            <button type="button" (click)="salvarProduto()" class="waves-effect waves-light btn">Salvar</button>&nbsp;
+            <button type="button" class="waves-effect waves-light btn">Voltar</button>
+        </div>
+     </div>
   </form>
 </div>
