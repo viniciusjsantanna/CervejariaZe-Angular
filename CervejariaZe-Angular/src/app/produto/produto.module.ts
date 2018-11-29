@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ProdutoService } from './produto.service';
 import 'materialize-css';
 import { MaterializeModule } from "angular2-materialize";
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ProdutoComponent, ProdutoCadastarComponent],
@@ -14,7 +15,8 @@ import { MaterializeModule } from "angular2-materialize";
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterializeModule
+    MaterializeModule,
+    RouterModule
   ],
   providers: [
     ProdutoService   

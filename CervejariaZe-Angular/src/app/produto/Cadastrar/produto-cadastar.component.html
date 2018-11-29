@@ -8,19 +8,15 @@
   <div class="nav-wrapper">
     <a href="#" class="brand-logo">&nbsp;&nbsp;Cervejaria do Zé</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="/produto">Produto</a></li>
-      <li><a class="dropdown-trigger" data-target="dropdown1" >LogOut</a></li>
+      <li><a href="javascript:void(0)"(click)="Logout()">LogOut</a></li>
     </ul>
   </div>
 </nav>
-<div class="row">
-  <div class="" style="margin-left: 20px; margin-right:20px; margin-top:50px;">
-      <h5 style="color:gray;"><i class="material-icons left small">add</i>Cadastrar Produto</h5>
-      <hr style="border-bottom: 1px solid gray;">
-  </div>
-  
+<div class="" style="margin-left: 20px; margin-right:20px; margin-top:20px;">
+    <h5 style="color:gray;"><i class="material-icons left small">add</i> Cadastrar</h5>
+    <hr style="border-bottom: 1px solid gray;">
 </div>
-<div class="container" style="margin-top:60px;">
+<div class="container" style="margin-top:20px;">
   <form [formGroup]="prodForm">
     <div class="row">
       <div class="input-field col s4">
@@ -63,7 +59,7 @@
     <div class="row">
         <div class="col s6">
             <button type="button" (click)="salvarProduto()" class="waves-effect waves-light btn">Salvar</button>&nbsp;
-            <button type="button" class="waves-effect waves-light btn">Voltar</button>
+            <a routerLink="/produto" href="" class="waves-effect waves-light btn">Voltar</a>
         </div>
      </div>
   </form>

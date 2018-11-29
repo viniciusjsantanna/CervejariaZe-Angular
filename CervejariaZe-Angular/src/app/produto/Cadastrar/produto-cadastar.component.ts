@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProdutoService } from '../produto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produto-cadastar',
@@ -16,7 +17,7 @@ export class ProdutoCadastarComponent implements OnInit {
   public file: any;
   public prodForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private produtoService:ProdutoService) {
+  constructor(private fb: FormBuilder, private produtoService:ProdutoService, private router: Router) {
     this.prodForm = this.fb.group({
       marca: ['', Validators.required],
       nome: ['',Validators.required],
@@ -30,7 +31,7 @@ export class ProdutoCadastarComponent implements OnInit {
   ngOnInit() {
   }
 
-  salvarProduto():void{
+  salvarProduto():void {
     const produto = this.prodForm.value;
     produto.imagem = this.file;
     this.produtoService.Cadastrar(produto).subscribe(res => {
@@ -38,7 +39,12 @@ export class ProdutoCadastarComponent implements OnInit {
     });
   }
 
-  onFileChange($event) {
+  onFileChange($event):void { 
     this.file = $event.target.files[0];
+  }
+
+  Logout():void {
+    // localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }
