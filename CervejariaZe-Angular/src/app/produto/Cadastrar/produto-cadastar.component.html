@@ -30,9 +30,9 @@
     </div>
     <div class="row">
       <div class="input-field col s4">
-          <select name="singleSelect" name="selectedOption" materialize="material_select">
+          <select name="singleSelect" formControlName="tipo" name="selectedOption" materialize="material_select">
             <option value="" disabled selected>Selecione</option>
-            <option *ngFor="let t of Tipo"  [value]="t.id">{{t.tipo}}</option>
+            <option *ngFor="let t of Tipo" [value]="t.id">{{t.tipo}}</option>
           </select>
           <label>Tipo</label>
       </div>

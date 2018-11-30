@@ -12,7 +12,7 @@ export class ProdutoCadastarComponent implements OnInit {
 
   public Tipo: Array<any> = [
     {id:1, tipo: 'Skol'},
-    {id:1, tipo: 'Kaiser'}
+    {id:2, tipo: 'Kaiser'}
   ];
   public file: any;
   public prodForm: FormGroup;
@@ -34,9 +34,7 @@ export class ProdutoCadastarComponent implements OnInit {
   salvarProduto():void {
     const produto = this.prodForm.value;
     produto.imagem = this.file;
-    this.produtoService.Cadastrar(produto).subscribe(res => {
-      console.log(res);
-    });
+    this.produtoService.Cadastrar(produto);
   }
 
   onFileChange($event):void { 

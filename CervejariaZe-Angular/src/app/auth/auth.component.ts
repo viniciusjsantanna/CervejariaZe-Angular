@@ -22,12 +22,13 @@ export class AuthComponent {
 
   public Autenticar():void{
     const usuarioLogado = this.authForm.value;
-    this.router.navigate(['/produto']);
-    // this.authService.Autenticar(usuarioLogado).subscribe(
-    //   res =>{
-    //     console.log(res);
-    //   }
-    // )
+    
+    this.authService.Autenticar(usuarioLogado).subscribe(
+      res =>{
+        console.log(res);
+        this.router.navigate(['/produto']);
+      }
+    );
   }
 
 }

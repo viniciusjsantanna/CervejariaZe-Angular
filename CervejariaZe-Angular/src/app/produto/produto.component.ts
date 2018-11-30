@@ -15,10 +15,12 @@ export class ProdutoComponent implements OnInit {
     {titulo: 'Cachaça', marca: 'Burgo', tipo: 'Tain'},
   ]
 
-  constructor(private produtoService: ProdutoService, private router:Router) { }
+  constructor(private produtoService: ProdutoService, private router:Router) {
+    this.Listar();
+   }
 
   ngOnInit() {
-    this.Listar();
+    
   }
 
   public Listar(): void{
