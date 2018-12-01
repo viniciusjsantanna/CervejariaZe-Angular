@@ -33,8 +33,10 @@ export class ProdutoCadastarComponent implements OnInit {
 
   salvarProduto():void {
     const produto = this.prodForm.value;
-    produto.imagem = this.file;
-    this.produtoService.Cadastrar(produto);
+    this.produtoService.Cadastrar(produto, this.file)
+        .subscribe(res => {
+            console.log(res);
+         });
   }
 
   onFileChange($event):void { 

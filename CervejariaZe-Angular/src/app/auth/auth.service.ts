@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {
+  map
+} from "rxjs/operators";
 
 @Injectable()
 export class AuthService {
@@ -14,9 +17,15 @@ export class AuthService {
       };
    }
 
-  public Autenticar(usuario): Observable<any>{
+  public Autenticar(usuario){
     const body = this.getParams(usuario);
-    return this.http.post('http://localhost:55732/api/auth', body.toString(), this.httpOptions);
+    return this.http.post('http://localhost:55732//api/auth', body.toString()).pipe(
+      map((res: any) => {
+        return res.results.map(item => {
+          console.log(item);
+        });
+      })
+    );
   }
 
   getParams(usuario){

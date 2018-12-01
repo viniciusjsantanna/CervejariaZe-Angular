@@ -12,7 +12,7 @@ export class ProdutoComponent implements OnInit {
   cards:Array<any> = [
     {titulo: 'SKOL', marca: 'Kaiser', tipo: 'Lager'},
     {titulo: 'Brahma', marca: 'Kaiser', tipo: 'Lager'},
-    {titulo: 'Cachaça', marca: 'Burgo', tipo: 'Tain'},
+    {titulo: 'Cachaça', marca: '51', tipo: 'Cana'},
   ]
 
   constructor(private produtoService: ProdutoService, private router:Router) {
@@ -24,7 +24,11 @@ export class ProdutoComponent implements OnInit {
   }
 
   public Listar(): void{
-    this.produtoService.Listar();
+    this.produtoService.Listar().subscribe(
+      data => {
+        console.log(data);
+      }
+    );
   }
 
   Logout():void {

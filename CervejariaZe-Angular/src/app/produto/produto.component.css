@@ -1,0 +1,19 @@
+.header{
+    margin-left: 20px; margin-right:20px; margin-top:20px;
+}
+
+.color{
+    color:gray;
+}
+
+.hr{
+    border-bottom: 1px solid gray;
+}
+
+.btn-buscar{
+    margin-top:20px;margin-right:45px;
+}
+
+.btn-cadastrar{
+    margin-top:20px;
+}
