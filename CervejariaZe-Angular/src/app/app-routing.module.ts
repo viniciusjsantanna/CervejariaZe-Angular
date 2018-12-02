@@ -9,17 +9,17 @@ const routes: Routes = [
   {
     path: 'produto',
     component: ProdutoComponent,
-    // canActivate: [AuthGuards]
+    canActivate: [AuthGuards]
   },
   {
     path: '',
     component: ProdutoComponent,
-    // canActivate: [AuthGuards]
+    canActivate: [AuthGuards]
   },
   {
     path: 'produto-cadastrar',
     component: ProdutoCadastarComponent,
-    // canActivate: [AuthGuards]
+    canActivate: [AuthGuards]
   },
   {
     path: 'login',

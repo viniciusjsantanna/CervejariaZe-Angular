@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from './produto.service';
 import { Router } from '@angular/router';
+import { ProdutoDTO } from '../models/produto.models';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-produto',
@@ -9,30 +11,39 @@ import { Router } from '@angular/router';
 })
 export class ProdutoComponent implements OnInit {
 
-  cards:Array<any> = [
-    {titulo: 'SKOL', marca: 'Kaiser', tipo: 'Lager'},
-    {titulo: 'Brahma', marca: 'Kaiser', tipo: 'Lager'},
-    {titulo: 'Cachaça', marca: '51', tipo: 'Cana'},
-  ]
+  listaProduto: Array<ProdutoDTO>;
+  filterForm: FormGroup;
 
-  constructor(private produtoService: ProdutoService, private router:Router) {
-    this.Listar();
-   }
+  constructor(private produtoService: ProdutoService, private router:Router, private fb: FormBuilder) {
+    this.filterForm = this.fb.group({
+      filtro: ['']
+    });
+  }
 
   ngOnInit() {
+    this.Listar();
     
   }
 
   public Listar(): void{
     this.produtoService.Listar().subscribe(
       data => {
-        console.log(data);
+        this.listaProduto = data;
+      }
+    );
+  }
+
+  public Filtrar(): void{
+    var obj = this.filterForm.value;
+    this.produtoService.Filtrar(obj.filtro).subscribe(
+      data => {
+        this.listaProduto = data;
       }
     );
   }
 
   Logout():void {
-    // localStorage.clear();
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 }

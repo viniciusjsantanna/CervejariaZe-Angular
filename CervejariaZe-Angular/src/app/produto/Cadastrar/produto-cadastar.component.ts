@@ -10,9 +10,13 @@ import { Router } from '@angular/router';
 })
 export class ProdutoCadastarComponent implements OnInit {
 
+  public message:String;
+  public show:Boolean;
   public Tipo: Array<any> = [
-    {id:1, tipo: 'Skol'},
-    {id:2, tipo: 'Kaiser'}
+    {id:1, tipo: 'Lager'},
+    {id:2, tipo: 'Pilsen'},
+    {id:3, tipo: 'Bock'},
+    {id:4, tipo: 'Ale'}
   ];
   public file: any;
   public prodForm: FormGroup;
@@ -25,7 +29,7 @@ export class ProdutoCadastarComponent implements OnInit {
       codigo: ['',Validators.required],
       imagem: ['',Validators.required]
     });
-
+    this.show = false;
   }
 
   ngOnInit() {
@@ -35,16 +39,23 @@ export class ProdutoCadastarComponent implements OnInit {
     const produto = this.prodForm.value;
     this.produtoService.Cadastrar(produto, this.file)
         .subscribe(res => {
-            console.log(res);
+          this.router.navigate(['/produto']);
+        
          });
   }
 
+  return(){
+    setTimeout(()=> {  
+        this.show = false;
+        this.router.navigate(['/produto']);
+    }, 1500);
+  }
   onFileChange($event):void { 
     this.file = $event.target.files[0];
   }
 
   Logout():void {
-    // localStorage.clear();
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 }

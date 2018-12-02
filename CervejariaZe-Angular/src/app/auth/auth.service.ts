@@ -19,13 +19,7 @@ export class AuthService {
 
   public Autenticar(usuario){
     const body = this.getParams(usuario);
-    return this.http.post('http://localhost:55732//api/auth', body.toString()).pipe(
-      map((res: any) => {
-        return res.results.map(item => {
-          console.log(item);
-        });
-      })
-    );
+    return this.http.post('http://localhost:55732//api/auth', body.toString(), this.httpOptions);
   }
 
   getParams(usuario){

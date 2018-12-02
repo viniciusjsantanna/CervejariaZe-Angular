@@ -8,30 +8,22 @@ import {
 @Injectable()
 export class ProdutoService {
   
-  httpOptions: any;
-
-  constructor(private http:HttpClient) {
-      this.httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/x-www-form-urlencoded',
-          'Access-Control-Allow-Origin': '*'
-        })
-      };
-   }
+  constructor(private http:HttpClient) {}
 
   public Cadastrar(produto, file): any{
     var formData = new FormData();
     formData.append("File", file);
-    formData.append("produto", produto);
-    return this.http.post('http://localhost:55732/api/produto', formData, this.httpOptions);
+    formData.append("produto", JSON.stringify(produto));
+    return this.http.post('http://localhost:55732/api/produto', formData);
   }
 
   public Listar(){
     return this.http.get<ProdutoDTO[]>('http://localhost:55732/api/produto').pipe(
-      map((res: any) => {
-        return res.results;
-      })
-    );;
+      map((res: any) => res));
+  }
+
+  public Filtrar(filtro: string){
+    return this.http.get<ProdutoDTO[]>('http://localhost:55732/api/produto/filtro?'+'filtro='+filtro);
   }
 
 }

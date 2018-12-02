@@ -25,8 +25,10 @@ export class AuthComponent {
     
     this.authService.Autenticar(usuarioLogado).subscribe(
       res =>{
-        console.log(res);
-        this.router.navigate(['/produto']);
+        if(res != null){
+          localStorage.setItem("usuarioLogado", JSON.stringify(res));
+          this.router.navigate(['/produto']);
+        }
       }
     );
   }
